@@ -75,7 +75,7 @@ The series of steps required to design a cell. They are separated into 3 steps (
         6. Apply the stimulus(input signals to test behavior)
         7. Supply the necessary output capacitance
         8. Supply the necessary simulation commands
-  Feed all of these steps into a Characterization software called GUNA, which outputs timing, power, and noise .libs.
+      #### Feed all of these steps into a Characterization software called GUNA, which outputs timing, power, and noise .libs.
 
 
 

@@ -72,10 +72,19 @@ The series of steps required to design a cell. They are separated into 3 steps (
         3. Recognize the behavior of the buffers
         4. Read the subcircuit
         5. Attach the necessary power supplies
-        6. Apply the stimulus(input signals to test behavior)
+        6. Apply the stimulus(input signals to test behavior such as waveforms)
         7. Supply the necessary output capacitance
         8. Supply the necessary simulation commands
       #### Feed all of these steps into a Characterization software called GUNA, which outputs timing, power, and noise .libs.
+## Timing Characterization 
+- Low slew thresholds will usually be measured at 20% of the value
+- High slew thresholds will usually be measured at 80% of the value
+- In and out thresholds will be measured at 50% of the value, regardless of whether they are rising or falling.
+### Propagation Delay
+Propigation delay will always be positive. If you have a negative propigation delay, then you may have chosen your thresholds incorrectly, or designed your circuit poorly.
+
+### Transition Time
+The time it takes to transition between threshold points (always measure from high to low).
 
 
 

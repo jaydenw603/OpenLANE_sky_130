@@ -62,8 +62,20 @@ Open Lane is an open-source RTL to GDSII flow that references various other open
 
 ### Cell Design Flow:
 The series of steps required to design a cell. They are separated into 3 steps (Inputs, Design Steps, Outputs)
-- Inputs: PDKS (process design kits) that are given by the foundry give design rules, SPICE model parameters (Threshold, linear regions, and saturation region equations, etc). The user also gets to customize some things, such as cell height, width, supply voltage, etc.
-- 
+- Inputs: PDKS (process design kits) that are given by the foundry give design rules, SPICE model parameters (Threshold, linear regions, and saturation region equations, etc). The user also gets to customize some things, such as cell height, width, supply voltage, pin location, and drawn gate length.
+- Design Steps:
+    - Circuit Design: Design the circuit function based on the design requirements established by the inputs. They are generally done with SPICE simulations
+    - Layout Design: Using the inputs, you now must design the library cell. Arrange the design using Euler's path and a sticky diagram to produce the best layout. In OpenLANE, this can be done with the magic tool. 
+    - Characterization: Helps get the timing, power, and noise information.
+        1. Start by reading the model file from the foundry
+        2. Read the extracted SPICE netlist
+        3. Recognize the behavior of the buffers
+        4. Read the subcircuit
+        5. Attach the necessary power supplies
+        6. Apply the stimulus(input signals to test behavior)
+        7. Supply the necessary output capacitance
+        8. Supply the necessary simulation commands
+  Feed all of these steps into a Characterization software called GUNA, which outputs timing, power, and noise .libs.
 
 
 

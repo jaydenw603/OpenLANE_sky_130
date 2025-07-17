@@ -40,6 +40,15 @@ Open Lane is an open-source RTL to GDSII flow that references various other open
 5. Pin Placement: The input and output ports are located in the region between the core and the edge of the die, located on the PADS. The placements of the ports depend on the arrangement of the cells on the cores and the preference of the designer. The clock ports are thicker, lower in resistance, compared to the data ports since these ports need to supply the whole chip.
 6. Cell Placement Blockage: Fills in all the area unused by the ports to prevent the automated tool from placing cells there.
 
-7. 
+## Floorplanning with OpenLANE
+
+## Floorplanning with Magic
+
+### Basic Functions: 
+- s: For selecting an object
+- v: Can be used in combination with s to center the screen. Hover your mouse over the die and press s then v to center.
+- z: For zooming in and out, repeatedly press it to zoom in more. Left click to created the bottom left boundry at which you want to zoom in on, right click to make the top right boundary, completing your square.
+
+8. 
 
 

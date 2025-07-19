@@ -88,6 +88,30 @@ The time it takes to transition between threshold points (always measure from hi
 
 # Day 3 - Designing a Library Cell with Magic and Ngspice Characterization 
 
-## I/O Placement:
-The I/O placer will automatically set the pins at equal distances apart (mode 1). To make the pins no longer equidistant, you can switch it to mode 2 by typing ```set ::env(FP_IO_MODE) 2``` into OpenLANE.
+### I/O Placement:
+The I/O placer will automatically set the pins at equal distances apart (mode 1). To make the pins no longer equidistant, you can switch it to mode 2 by typing ```set ::env(FP_IO_MODE) 2``` into OpenLANE. You can view the new floorplan using magic, and then change the config.tcl file by echo'ing the new variable value. 
+
+## Designing a Library Cell
+- SPICE Deck - It has all the connectivity information in a cell (inputs, taps, component values, etc).
+- Values in the SPICE Deck: Must set the length and width of PMOS and NMOS transistors. The PMOS transistor should be 2-3 times wider than the NMOS transistor. The gate and supply voltages should be a multiple of the length of the transistors.
+## Writing the SPICE Deck:
+#### Examples:
+``` 
+*** MODEL Description ***
+*** NETLIST Description ***
+M1 out in vdd vdd pmos W=0.375u L=0.25u
+[MOSFET Name] [Drain Node] [Gate Node] [Source Node] [Substrate] [Transistor Type] [Width] [Length]
+
+cload out 0 10f
+Vdd vdd 0 2.5
+Vin in 0 2.5
+[Name] [Node] [Node] [Value]
+```
+#### Other Important Commands:
+- `.op` - Starts the SPICE simulation
+- ```.dc Vin 0 2.5 0.05``` - Searches for the input gate voltage for values from 0V-2.5V at increments of 0.05V while also measuring the output waveform.
+- 
+
+
+
 

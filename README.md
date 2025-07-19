@@ -86,5 +86,8 @@ Propigation delay will always be positive. If you have a negative propigation de
 ### Transition Time
 The time it takes to transition between threshold points (always measure from high to low).
 
+# Day 3 - Designing a Library Cell with Magic and Ngspice Characterization 
 
+## I/O Placement:
+The I/O placer will automatically set the pins at equal distances apart (mode 1). To make the pins no longer equidistant, you can switch it to mode 2 by typing "set ::env(FP_IO_MODE) 2" into OpenLANE.
 

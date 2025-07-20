@@ -36,6 +36,7 @@ Open Lane is an open-source RTL to GDSII flow that references various other open
 <img width="1382" height="752" alt="OpenLANE ASIC flow chart" src="https://github.com/user-attachments/assets/282a492d-ead5-4465-8034-1eba8066e1a9" />
 
 ## OpenLANE Setup
+type in `docker` and then follow the commands in the picture. 
 
 ![OPENLANE SETUP UBUNTU](https://github.com/user-attachments/assets/ba25d373-a963-47ca-abd7-93413883e74c)
 

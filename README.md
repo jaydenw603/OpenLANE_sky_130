@@ -47,9 +47,16 @@ type in `docker` and then follow the commands in the picture.
 1. Define the Width and Height of the Core & Die: You need to start by finding the area of the netlist, which is essentially the space that all the standard cells(Examples: AND, OR) take up. You can use this to find the "Utilization Factor," which is (Area of the Netlist)/(Area of the Core). Generally, the utilization factor is kept at roughly 60% to allow for extra space in the core for non-ideal wires. Aspect ratio shows the ratio between height and width. 
 2. Define the Location of Preplaced Cells: These are reusable logic blocks or macros that are already implemented and need to be placed by the user. The automated tools won't change the position of these blocks, so it's important to get these right.
 3. Surround Preplaced Cells with Decoupling Capacitors: The macros often switch lots of current, which can lead to voltage drops, excess noise, and various other glitches. By placing decoupling capacitors near the logic block, the capacitors will send enough current needed for the logicblock to switch within the noise margin range.
+
+<img width="966" height="770" alt="OpenLANE capacitor insert" src="https://github.com/user-attachments/assets/ac300f0c-e917-47fb-be55-f1b54efb70e0" />
+
+
 4. Power Planning: Ideally, there will be multiple power source taps for many reasons. It reduces voltage drops, and allows enough current to be deliver, because one set of VDD & VSS pins aren't enough and will get overloaded. Aditionally, it prevents ground bounce( a brief jump in GND potential). Power issues could lead to timing issues, so it's important to have multiple powersources. This can be done through a "power mesh," a network of horizontal and vertical bands of VDD and VSS.
 5. Pin Placement: The input and output ports are located in the region between the core and the edge of the die, located on the PADS. The placements of the ports depend on the arrangement of the cells on the cores and the preference of the designer. The clock ports are thicker, lower in resistance, compared to the data port,s since these ports need to supply the whole chip.
 6. Cell Placement Blockage: Fills in all the areas unused by the ports to prevent the automated tool from placing cells there.
+
+<img width="1366" height="775" alt="OpenLANE cell placement done" src="https://github.com/user-attachments/assets/9f669bea-d58d-47f4-ae0f-488ee29673cd" />
+
 
 ## Floorplanning with OpenLANE
 In OpenLANE type in `run_floorplan`. After checking the results you should see this:
@@ -71,6 +78,9 @@ This shows the die area of the chip
 1. Bind the netlist to a physical cell: Give each component in the netlist a shape, width, and height from a library(a place where you can find the information on every cell, such as height, width, delay information, and the required conditions of the cell).
 2. Placement: Place the cells on the floorplan. The flip-flops should be placed as close as possible to their input and output pins to reduce delay.
 3. Now Optimize the Placement: This can be done by using a buffer or repeater to replicate and boost the signal across long distances. Repeaters should be inserted on the estimated capacitance and wire length due to the distance between the block and the port.
+
+<img width="1407" height="763" alt="OpenLANE Placement Optimization" src="https://github.com/user-attachments/assets/6f0adb44-4626-4b68-bec1-56a04588bbeb" />
+
 
 ## Running Placement on OpenLANE
 Type in `run_placement`

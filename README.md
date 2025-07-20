@@ -95,7 +95,7 @@ The I/O placer will automatically set the pins at equal distances apart (mode 1)
 - SPICE Deck - It has all the connectivity information in a cell (inputs, taps, component values, etc).
 - Values in the SPICE Deck: Must set the length and width of PMOS and NMOS transistors. The PMOS transistor should be 2-3 times wider than the NMOS transistor. The gate and supply voltages should be a multiple of the length of the transistors.
 ## Writing the SPICE Deck:
-#### Examples:
+#### Example:
 ``` 
 *** MODEL Description ***
 *** NETLIST Description ***
@@ -106,12 +106,29 @@ cload out 0 10f
 Vdd vdd 0 2.5
 Vin in 0 2.5
 [Name] [Node] [Node] [Value]
+
+
+.LIB "tsmc_025ummodel.mod" CMOS_MODELS (This grabs the model file for all these specific types of transistors, including all the descriptions and parameters)
+.end
 ```
-#### Other Important Commands:
+#### Simulation Commands:
 - `.op` - Starts the SPICE simulation
 - ```.dc Vin 0 2.5 0.05``` - Searches for the input gate voltage for values from 0V-2.5V at increments of 0.05V while also measuring the output waveform.
-- 
 
+#### SPICE Simulation Example
+- Switching Threshold: The point at which Vin = Vout. This can be represented as the intersection between the curves Vm and Vout.
 
+## Custom Inverter Design Lab
+The following code is pasted to clone the repository into OpenLANE:
+```git clone https://github.com/nickson-jose/vsdstdcelldesign.git```
+The following code is pasted to clone the sky130A.tech file to the new "vsdstdcelldesign" directory:
+```cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/```
+
+## CMOS Fabrication Process (16-mask process):
+1. Selecting a Substrate: The material on which the IC is fabricated. The most commonly used substrate is the P-type substrate. Different types of substrates have different properties, such as resistivity and doping level. 
+2. Creating an Active Region for Transistors: Grow an insulator on the substrate (SiO2) to separate the transistor regions. Then deposit Si3N4 onto the insulator. Finally, deposit photoresist onto the Si3N4. At this point, you can create "pockets" by using the process of photolithography. During this process, a "mask" protects the design from the UV light, allowing for the rest of the photoresist to be removed. Then, through the process of etching, the areas of Si3N4 that no longer have photoresist on top of it get removed. After this is done, the rest of the photoresist is removed. The SiO2 is then grown by putting it inside an oxidation furnace, looking like this afterward: 
+
+Finally, the rest of the Si3N4 is removed, and the "pockets" where it once was are the active regions where the transistors are grown. 
+3. 
 
 

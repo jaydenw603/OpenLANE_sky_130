@@ -242,8 +242,12 @@ Then, add a layer of Si3N4 to protect the chip. Finally, use the 16th and final 
 <img width="874" height="717" alt="mask 16 end" src="https://github.com/user-attachments/assets/c9d30edf-a7e3-42d1-a3e2-5b9bec6f6e82" />
 
 ## Custom Inverter Design Lab
+
 The following code is pasted to clone the repository into OpenLANE:
+
 ```git clone https://github.com/nickson-jose/vsdstdcelldesign.git```
+
 The following code is pasted to clone the sky130A.tech file to the new "vsdstdcelldesign" directory:
+
 ```cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/```
 

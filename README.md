@@ -126,9 +126,19 @@ The following code is pasted to clone the sky130A.tech file to the new "vsdstdce
 
 ## CMOS Fabrication Process (16-mask process):
 1. Selecting a Substrate: The material on which the IC is fabricated. The most commonly used substrate is the P-type substrate. Different types of substrates have different properties, such as resistivity and doping level. 
-2. Creating an Active Region for Transistors: Grow an insulator on the substrate (SiO2) to separate the transistor regions. Then deposit Si3N4 onto the insulator. Finally, deposit photoresist onto the Si3N4. At this point, you can create "pockets" by using the process of photolithography. During this process, a "mask" protects the design from the UV light, allowing for the rest of the photoresist to be removed. Then, through the process of etching, the areas of Si3N4 that no longer have photoresist on top of it get removed. After this is done, the rest of the photoresist is removed. The SiO2 is then grown by putting it inside an oxidation furnace, looking like this afterward: 
+2. Creating an Active Region for Transistors: Grow an insulator on the substrate (SiO2) to separate the transistor regions. Then deposit Si3N4 onto the insulator. Finally, deposit photoresist onto the Si3N4.
+<img width="1121" height="568" alt="pre-litphographty" src="https://github.com/user-attachments/assets/cb62cf06-e83c-4901-9bbf-b7bd1b936873" />
+
+ At this point, you can create "pockets" by using the process of photolithography. During this process, a "mask" protects the design from the UV light, allowing for the rest of the photoresist to be removed. Then, through the process of etching, the areas of Si3N4 that no longer have photoresist on top of it get removed. After this is done, the rest of the photoresist is removed. The SiO2 is then grown by putting it inside an oxidation furnace, looking like this afterward: 
+<img width="890" height="392" alt="oxidation_furnace_after" src="https://github.com/user-attachments/assets/ccce1581-d91e-4112-b0ab-dec9a24667a3" />
 
 Finally, the rest of the Si3N4 is removed, and the "pockets" where it once was are the active regions where the transistors are grown. 
-3. 
+3. N-well & P-well formation: Place another layer of photoresist, and use another mask to isolate one half of the substrate. Then, implant Boron in the part of the substrate without photoresist, thus creating a P-well. 
+<img width="1173" height="583" alt="boron implantation" src="https://github.com/user-attachments/assets/a576fd46-8f26-4fa8-9588-2fd47c7e137a" />
 
+Then repeat the steps to isolate the other side and implant Phorpourus ions, creating an N-well. 
+<img width="909" height="581" alt="N-well implantation" src="https://github.com/user-attachments/assets/36003b81-89ae-4955-9aba-6877bbe6b010" />
 
+Finally, the substrate is placed inside a furnace to diffuse the P-well & N-well, expanding their depth into the substrate. 
+
+4. Formation of the Gate: 

@@ -243,12 +243,16 @@ Then, add a layer of Si3N4 to protect the chip. Finally, use the 16th and final 
 
 ## Custom Inverter Design Lab
 
-The following code is pasted to clone the repository into OpenLANE:
+1. The following code is pasted to clone the repository into OpenLANE:
 
 ```git clone https://github.com/nickson-jose/vsdstdcelldesign.git```
 
-The following code is pasted to clone the sky130A.tech file to the new "vsdstdcelldesign" directory:
+2. The following code is pasted to clone the sky130A.tech file to the new "vsdstdcelldesign" directory:
 
 ```cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/```
 
+Note: to create a box in Magic you need 2 coordinate points (llx,lly) and (urx,ury), (lower left and upper right).
 
+3. Make an extract file by typing ```extract all``` in the tkcon terminal. After, extract the spice file by typing ```ext2spice cthresh 0 rthresh 0``` followed by ```ext2spice```.
+4. Download ngspice if necessary by typing in ```sudo apt install ngspice```.
+5. View the spice file by typing in ```vim sky130_inv.spice```.

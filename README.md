@@ -295,5 +295,14 @@ My estimated Fall Transition: 4.06634ns-4.0401ns = 0.02624ns
 
 ![fall delay](https://github.com/user-attachments/assets/97e1e105-ac83-495a-bb37-986ca3c3afa4)
 
+## Magic DRC Lab
+- A website that lists all Magic commands and some tutorials on how to use the Magic tool: http://opencircuitdesign.com/magic/
+- A website that lists specific information about the technology, like electrical connectivity, design rules, rules for netlists, etc: http://opencircuitdesign.com/magic/techref/maint2.html
+- A website that lists specific DRC rules and syntax: https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#rules-periphery--page-root
+1. Type in ```wget http://opencircuitdesign.com/open_pdks/archive/drc/tests.tgz``` to download the files needed for the lab and then extract the tarball.
+2. Create an example of the DRC rules by making a box of m3contact and then typing ```cif see VIA2``` into the tkcon terminal. It should auto-format via2 onto the box of m3contact as outlined by the design rules, always leaving the required amount of space between the via2 and edge of m3contact.
+
+![painted metal3](https://github.com/user-attachments/assets/c6100f39-e340-401e-91e3-dc9a44177843)
+
 
 

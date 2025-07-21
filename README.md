@@ -258,4 +258,42 @@ Note: to create a box in Magic you need 2 coordinate points (llx,lly) and (urx,u
 5. View the spice file by typing in ```vim sky130_inv.spice```.
 
 ![spice view](https://github.com/user-attachments/assets/a2c350d4-0b5c-478e-a807-fafaafa74596)
+#### Basic Commands:
+- :w - writes the changes made in the vim file to the file (saves it)
+- :quit! - exits the vim file
+- i - allows you to edit the file, "insert" command
+- Esc - allows you to escape the insert command
+  
+6. Edit the file to make it look like this:
+
+![Spice deck](https://github.com/user-attachments/assets/6e72eec6-cf66-48ae-ae19-55a94b8a0ee3)
+
+
+7. Type in ```ngspice sky130_inv.spice``` in the terminal to open ngspice.
+8. Then type in ```plot y vs time a``` to plot variables y and a on a Voltage vs Time graph.
+
+![ng spice graph](https://github.com/user-attachments/assets/207f7a16-8b21-49b0-8783-ec5c4fca0142)
+
+9. Using this graph, we can now find the slew rates and propigation delay:
+#### Rise Delay & Fall Delay(The time difference between 50% of the Voltage Value, 1.65V):
+My estimated Rise Delay: 4.06634ns - 4.0401ns = 0.02624ns
+
+![rise transition](https://github.com/user-attachments/assets/ce0e3a70-ad2c-4514-9355-8f876d14b1b4)
+
+
+My estimated Fall Delay: 4.05545ns - 4.04554ns = 0.00991ns
+
+![fall transition](https://github.com/user-attachments/assets/18dcd77c-c132-4070-a01c-e86a62790e8c)
+
+
+#### Rise & Fall Transition(The time difference between 20% and 80% of the Voltage Value, 0.66V and 2.64V):
+My estimated Rise Transition: 2.18ns - 2.1194ns = 0.0606ns
+
+![rise time](https://github.com/user-attachments/assets/bf0644c5-36b7-47a8-b445-e5de333005fa)
+
+My estimated Fall Transition: 4.06634ns-4.0401ns = 0.02624ns
+
+![fall delay](https://github.com/user-attachments/assets/97e1e105-ac83-495a-bb37-986ca3c3afa4)
+
+
 

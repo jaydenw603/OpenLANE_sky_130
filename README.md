@@ -256,3 +256,6 @@ Note: to create a box in Magic you need 2 coordinate points (llx,lly) and (urx,u
 3. Make an extract file by typing ```extract all``` in the tkcon terminal. After, extract the spice file by typing ```ext2spice cthresh 0 rthresh 0``` followed by ```ext2spice```.
 4. Download ngspice if necessary by typing in ```sudo apt install ngspice```.
 5. View the spice file by typing in ```vim sky130_inv.spice```.
+
+![spice view](https://github.com/user-attachments/assets/a2c350d4-0b5c-478e-a807-fafaafa74596)
+

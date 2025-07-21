@@ -251,3 +251,4 @@ The following code is pasted to clone the sky130A.tech file to the new "vsdstdce
 
 ```cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/```
 
+

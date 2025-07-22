@@ -312,6 +312,9 @@ My estimated Fall Transition: 4.06634ns-4.0401ns = 0.02624ns
 
 ![skytech change](https://github.com/user-attachments/assets/fa024add-76b8-4639-879f-5fcc4b3b28c7)![skytech change 2](https://github.com/user-attachments/assets/d5eb0948-8da3-4e0e-b11f-908e9df01ee4)
 
+![drc issue fixed](https://github.com/user-attachments/assets/9ed411f0-4047-41c1-8ff2-d77b0505a487)
+
+# Day 4 - Pre-layout timing analysis & the Importance of a Good Clock Tree
 
 
 

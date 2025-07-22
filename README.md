@@ -304,5 +304,14 @@ My estimated Fall Transition: 4.06634ns-4.0401ns = 0.02624ns
 
 ![painted metal3](https://github.com/user-attachments/assets/c6100f39-e340-401e-91e3-dc9a44177843)
 
+3. Here is an example of a DRC issue where it isn't detecting an issue despite the polyspacing being less than .21um.
+
+![drc no issues](https://github.com/user-attachments/assets/a2f5a2fe-5c88-4455-a667-2299fadcae76)
+
+4. This can be fixed by altering the sky130A.tech file as such. You can find keywords in vim by typing `/` followed by the keyword.
+
+![skytech change](https://github.com/user-attachments/assets/fa024add-76b8-4639-879f-5fcc4b3b28c7)![skytech change 2](https://github.com/user-attachments/assets/d5eb0948-8da3-4e0e-b11f-908e9df01ee4)
+
+
 
 

@@ -316,5 +316,12 @@ My estimated Fall Transition: 4.06634ns-4.0401ns = 0.02624ns
 
 # Day 4 - Pre-layout timing analysis & the Importance of a Good Clock Tree
 
+## Converting Grid Info to Track Info in Magic
+You can find the information under the pdks in the format [name] [axis] [offset] [track pitch]: 
 
+![grid coordinates](https://github.com/user-attachments/assets/10ca0603-5dbb-4c68-8395-0e302d853d5a)
+
+You can then type this information into the tkcon terminal in magic to change the grid. You can toggle the grid in magic by pressing `g`. Type in ```grid 0.46um 0.34um 0.23um 0.17um``` to change the grid values to those shown in the file. When viewing the grid again, it will be changed and the pins will lie on the interestions
+
+![new grid magic](https://github.com/user-attachments/assets/13f2a1e2-2967-4e39-aa6a-9a142c6441f7)
 

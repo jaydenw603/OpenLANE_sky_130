@@ -355,3 +355,19 @@ Delay tables are used to find the timing of each cell. The main factors of delay
 
 In this example, the skew is 0 across all blocks because the latency is always x9 + y15.
 
+## Day 4 Lab Cont.
+
+To minimize the slack error, type the following commands into the openlane terminal:
+
+```
+% echo $::env(SYNTH_STRATEGY)
+% set ::env(SYNTH_STRATEGY) 1
+% echo $::env(SYNTH_BUFFERING) 
+% echo $::env(SYNTH_SIZING) 
+% set ::env(SYNTH_SIZING) 1
+% echo $::env(SYNTH_DRIVING_CELL)
+```
+Afterwards type in `init_floorplan` and then `run_placement`. I got these design stats after I ran placement.
+
+![working placement](https://github.com/user-attachments/assets/19fa2085-2dde-4347-982f-12a9612a3491)
+

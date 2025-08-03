@@ -321,7 +321,36 @@ You can find the information under the pdks in the format [name] [axis] [offset]
 
 ![grid coordinates](https://github.com/user-attachments/assets/10ca0603-5dbb-4c68-8395-0e302d853d5a)
 
-You can then type this information into the tkcon terminal in magic to change the grid. You can toggle the grid in magic by pressing `g`. Type in ```grid 0.46um 0.34um 0.23um 0.17um``` to change the grid values to those shown in the file. When viewing the grid again, it will be changed and the pins will lie on the interestions
+You can then type this information into the tkcon terminal in magic to change the grid. You can toggle the grid in magic by pressing `g`. Type in ```grid 0.46um 0.34um 0.23um 0.17um``` to change the grid values to those shown in the file. When viewing the grid again, it will be changed and the pins will lie on the intersections
 
 ![new grid magic](https://github.com/user-attachments/assets/13f2a1e2-2967-4e39-aa6a-9a142c6441f7)
 
+I personally struggled to run synthesis on the new config.tcl file, but I got it after lots of debugging.
+
+After getting errors like these for a while: ![openland issues cont](https://github.com/user-attachments/assets/1ea2534f-b269-411c-bf7d-1cb470c54051)
+
+I learned that completely restarting OpenLane and going through the docker process fixed it. I assume the software is caching LIB_MAX values somewhere and causing it to conflict.
+
+I then identified another error, which was due to my permissions. Originally, my `picorv32a.v` & `picorv32a.sdc` files belonged to the docker group, instead of my user, so I had to redownload those files.
+
+![working src directory](https://github.com/user-attachments/assets/f736a7dd-3a95-49d2-86dc-6a964b583a66)
+
+This was my working config.tcl file.
+
+![working config tcl file](https://github.com/user-attachments/assets/48ddd111-1daa-4eb2-a5ba-808cfa12994a)
+
+However, there is a large slack violation, which is expected and will be fixed later. 
+
+![slack violation](https://github.com/user-attachments/assets/346b1cca-5f49-4ca0-89e8-c6c1978f93f4)
+
+## Delay Tables
+
+Buffers on the same level must have the same capacitance and size to ensure equal timing delay on each level. However, they can be different on differing levels. This means different levels will have varying slew rates and will thus have varying delays.
+
+![buffer](https://github.com/user-attachments/assets/86219e63-4abf-4eab-8e89-384983963bd3)
+
+Delay tables are used to find the timing of each cell. The main factors of delay are input slew and output capacitance. Each buffer will have its own unique delay table. You add the delay from all levels to find the latency of each block, which should be the same. 
+
+![delay tables](https://github.com/user-attachments/assets/fe31d891-ed76-4caa-bd3e-5a8c89db07f6)
+
+In this example, the skew is 0 across all blocks because the latency is always x9 + y15.

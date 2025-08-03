@@ -361,7 +361,7 @@ To minimize the slack error, type the following commands into the openlane termi
 
 ```
 % echo $::env(SYNTH_STRATEGY)
-% set ::env(SYNTH_STRATEGY) 1
+% set ::env(SYNTH_STRATEGY) "DELAY 1"
 % echo $::env(SYNTH_BUFFERING) 
 % echo $::env(SYNTH_SIZING) 
 % set ::env(SYNTH_SIZING) 1
@@ -378,3 +378,14 @@ After opening magic in the placement directory of this run, I saw this placement
 When taking a closer look at the chip, you can see how the rails are aligned across cells.
 
 ![alligned rails](https://github.com/user-attachments/assets/df1c8dc5-fde6-4de3-ad58-6cf071e8c5c2)
+
+## Timing Analysis 
+The equation for Timing Analysis is ```Θ < T - S - SU```
+Θ (Combinational Delay): The total time the signal takes to travel between two flip-flops. It's the time your circuit takes to process a signal between two sequential clocked elements.
+T (Time period): The duration of one full clock cycle. This is the maximum time required for a signal to complete its journey between flip-flops.
+S (Setup time): It's how early the signal needs to arrive before the clock ticks so the capture flip-flop can read it correctly.
+SU (Setup Uncertainty): It’s a buffer that accounts for the unpredictable wiggles in the clock's timing caused by hardware imperfections.
+
+## Lab Steps to Configure OpenSTA
+
+

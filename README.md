@@ -371,3 +371,10 @@ Afterwards type in `init_floorplan` and then `run_placement`. I got these design
 
 ![working placement](https://github.com/user-attachments/assets/19fa2085-2dde-4347-982f-12a9612a3491)
 
+After opening magic in the placement directory of this run, I saw this placement: 
+
+![placement](https://github.com/user-attachments/assets/54c5fe17-3dbc-492a-b729-c103cb5e6106)
+
+When taking a closer look at the chip, you can see how the rails are aligned across cells.
+
+![alligned rails](https://github.com/user-attachments/assets/df1c8dc5-fde6-4de3-ad58-6cf071e8c5c2)

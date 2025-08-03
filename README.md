@@ -354,3 +354,4 @@ Delay tables are used to find the timing of each cell. The main factors of delay
 ![delay tables](https://github.com/user-attachments/assets/fe31d891-ed76-4caa-bd3e-5a8c89db07f6)
 
 In this example, the skew is 0 across all blocks because the latency is always x9 + y15.
+

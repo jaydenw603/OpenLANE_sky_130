@@ -388,13 +388,35 @@ SU (Setup Uncertainty): It’s a buffer that accounts for the unpredictable wigg
 
 ## Lab Steps to Configure OpenSTA
 
-Reduce the negative slack by setting ```set ::env(SYNTH_MAX_FANOUT) 4``` and running synthesis again. 
+Reduce the negative slack by setting ```set ::env(SYNTH_MAX_FANOUT) 4``` and running synthesis again. I actually removed all my negative slack.
 
 ![0 slack](https://github.com/user-attachments/assets/5b9e5291-d276-4e7e-b50d-d3ac3cadba35)
 
-After setting up the pre_sta.conf file for OpenSTA timing debugging and running these commands I was able to reduce my negative slack from -3.02 to -1.97:
+After setting up the pre_sta.conf file for OpenSTA timing debugging and running these commands I was able to reduce my negative slack from -3.02 to -1.97 (test file because my true wns is 0):
 ```
 replace_cell 46045 sky130_fd_sc_hd__mux2_4
 replace_cell 46535 sky130_fd_sc_hd__mux4_4
-replace_cell 23636 sky130_fd_sc_hd__nand2_4```
+replace_cell 23636 sky130_fd_sc_hd__nand2_4
+```
+## Clock Tree Synthesis 
 
+Clock Slew: This happens due to the resistance and capacitance of the wires carrying the clock signal, causing distortion or delay by the time it reaches its destination. To control clock slew, designers use clock buffers.
+Crosstalk: Crosstalk occurs when a signal from a nearby net interferes with the clock net. Clock shielding helps prevent this by isolating the clock net from adjacent nets, reducing the coupling capacitance between them. The shield can be connected to either VDD or ground since these voltages are stable.
+
+<img width="1389" height="732" alt="clock net sheidl" src="https://github.com/user-attachments/assets/133d9c96-2542-43e2-a004-c48f4ab4d88b" />
+
+### Timing Analysis with real Clocks
+
+Timing analysis with real clocks accounts for the delays introduced by clock buffers, which influence both setup and hold checks. In setup analysis, the data must arrive at the capture flip-flop before the next rising clock edge to be latched correctly. A setup violation occurs when the path is too slow, often due to high combinational delay, clock buffer delay, setup time, or timing uncertainty (jitter). These factors are analyzed across two clock cycles to ensure data stability.
+
+Hold analysis, on the other hand, ensures that data is not captured too early. It examines whether the data remains stable after being launched, using the same rising clock edge for both launch and capture flip-flops. A hold violation happens when the path is too fast, and data arrives before the flip-flop is ready to capture it. This is influenced by combinational delay, hold time, and clock buffer delay, but not by time period or jitter. The ultimate goal is to achieve positive slack in both setup and hold checks to ensure reliable data capture.
+
+<img width="1365" height="766" alt="clocks thign" src="https://github.com/user-attachments/assets/82c61691-cc11-4287-a7b6-a5f367a86e88" />
+
+
+## Running CTS with TritonCTS
+After reducing the negative slack as much as possible, and running floorplan and placement, type in `run_cts`. This will create a DEF file which can be used for CTS. 
+
+![run_cts](https://github.com/user-attachments/assets/cce2f244-489d-4dfe-af5f-7598e2d6fe88)
+
+To the left of the `<` is the Data Arrival Time and to the right is the Data Required Time. Arrival - Required = Slack, which should always be 0 or greater. 

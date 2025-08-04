@@ -388,4 +388,13 @@ SU (Setup Uncertainty): It’s a buffer that accounts for the unpredictable wigg
 
 ## Lab Steps to Configure OpenSTA
 
+Reduce the negative slack by setting ```set ::env(SYNTH_MAX_FANOUT) 4``` and running synthesis again. 
+
+![0 slack](https://github.com/user-attachments/assets/5b9e5291-d276-4e7e-b50d-d3ac3cadba35)
+
+After setting up the pre_sta.conf file for OpenSTA timing debugging and running these commands I was able to reduce my negative slack from -3.02 to -1.97:
+```
+replace_cell 46045 sky130_fd_sc_hd__mux2_4
+replace_cell 46535 sky130_fd_sc_hd__mux4_4
+replace_cell 23636 sky130_fd_sc_hd__nand2_4```
 

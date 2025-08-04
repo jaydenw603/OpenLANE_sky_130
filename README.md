@@ -406,7 +406,7 @@ Crosstalk: Crosstalk occurs when a signal from a nearby net interferes with the 
 <img width="1389" height="732" alt="clock net sheidl" src="https://github.com/user-attachments/assets/133d9c96-2542-43e2-a004-c48f4ab4d88b" />
 
 ### Timing Analysis with real Clocks
-
+Single Clock:
 Timing analysis with real clocks accounts for the delays introduced by clock buffers, which influence both setup and hold checks. In setup analysis, the data must arrive at the capture flip-flop before the next rising clock edge to be latched correctly. A setup violation occurs when the path is too slow, often due to high combinational delay, clock buffer delay, setup time, or timing uncertainty (jitter). These factors are analyzed across two clock cycles to ensure data stability.
 
 <img width="1365" height="766" alt="clocks thign" src="https://github.com/user-attachments/assets/82c61691-cc11-4287-a7b6-a5f367a86e88" />
@@ -423,4 +423,23 @@ Hold analysis, on the other hand, ensures that data is not captured too early. I
 After reducing the negative slack as much as possible, and running floorplan and placement, type in `run_cts`. This will create a DEF file which can be used for CTS. 
 
 ![run_cts](https://github.com/user-attachments/assets/cce2f244-489d-4dfe-af5f-7598e2d6fe88)
+
+After following the steps for CTS analysis, there is a large slack violation. However, this is to be expected because we are evaluating it with Min and Max corners, not just one. This means this analysis is unreliable.
+
+![cts analysis](https://github.com/user-attachments/assets/618523bb-1715-4ed3-a012-6251a8ee9fe5)
+
+After following these correct steps (with the db file already setup) you get the correct analysis: 
+```
+openroad
+read_db pico_cts.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/t3/results/synthesis/picorv32a.synthesis_cts.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+link_design picorv32a
+read_sdc /openLANE_flow/vsdstdcelldesign/extras/my_base.sdc
+set_propagated_clock [all_clocks]
+report_checks -format full_clock_expanded -digits 4
+```
+
+![correct cts analysis](https://github.com/user-attachments/assets/c960a392-dab6-4b38-9ef8-5a2d2ccb4a93)
+
 

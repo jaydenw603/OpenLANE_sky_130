@@ -409,9 +409,14 @@ Crosstalk: Crosstalk occurs when a signal from a nearby net interferes with the 
 
 Timing analysis with real clocks accounts for the delays introduced by clock buffers, which influence both setup and hold checks. In setup analysis, the data must arrive at the capture flip-flop before the next rising clock edge to be latched correctly. A setup violation occurs when the path is too slow, often due to high combinational delay, clock buffer delay, setup time, or timing uncertainty (jitter). These factors are analyzed across two clock cycles to ensure data stability.
 
+<img width="1365" height="766" alt="clocks thign" src="https://github.com/user-attachments/assets/82c61691-cc11-4287-a7b6-a5f367a86e88" />
+
+To the left of the `<` is the Data Arrival Time and to the right is the Data Required Time. Arrival - Required = Slack, which should always be 0 or greater. 
+
 Hold analysis, on the other hand, ensures that data is not captured too early. It examines whether the data remains stable after being launched, using the same rising clock edge for both launch and capture flip-flops. A hold violation happens when the path is too fast, and data arrives before the flip-flop is ready to capture it. This is influenced by combinational delay, hold time, and clock buffer delay, but not by time period or jitter. The ultimate goal is to achieve positive slack in both setup and hold checks to ensure reliable data capture.
 
-<img width="1365" height="766" alt="clocks thign" src="https://github.com/user-attachments/assets/82c61691-cc11-4287-a7b6-a5f367a86e88" />
+<img width="1380" height="769" alt="holding anaylss" src="https://github.com/user-attachments/assets/678daf6c-11ba-4c3b-b39f-0ecff43f74ce" />
+
 
 
 ## Running CTS with TritonCTS
@@ -419,4 +424,3 @@ After reducing the negative slack as much as possible, and running floorplan and
 
 ![run_cts](https://github.com/user-attachments/assets/cce2f244-489d-4dfe-af5f-7598e2d6fe88)
 
-To the left of the `<` is the Data Arrival Time and to the right is the Data Required Time. Arrival - Required = Slack, which should always be 0 or greater. 

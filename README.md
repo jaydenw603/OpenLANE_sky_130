@@ -431,7 +431,7 @@ After following the steps for CTS analysis, there is a large slack violation. Ho
 After following these correct steps (with the db file already setup) you get the correct analysis: 
 ```
 openroad
-read_db pico_cts.db
+read_db pico_cts.db (don't have to write the db file again because nothing changed)
 read_verilog /openLANE_flow/designs/picorv32a/runs/t3/results/synthesis/picorv32a.synthesis_cts.v
 read_liberty $::env(LIB_SYNTH_COMPLETE)
 link_design picorv32a
@@ -441,5 +441,46 @@ report_checks -format full_clock_expanded -digits 4
 ```
 
 ![correct cts analysis](https://github.com/user-attachments/assets/c960a392-dab6-4b38-9ef8-5a2d2ccb4a93)
+
+![whole slack](https://github.com/user-attachments/assets/72a4bfad-e177-43e5-b4bb-4c137b57af69)
+
+# Day 5 - Final Steps for RTL2GDS
+
+## Routing
+One routing method is called Maze Routing or Lee's Algorithm:
+It looks for the shortest path between two cells(source and target) with a routing grid. There may be multiple paths, but the best path is one with the fewest bends/corners. The route can't be diagonal, often looking like an L-shape, and must not overlap an obstruction such as a macro. Some downsides to this algorithm are its high run time and high memory consumption, so it's better to use a more optimized routing algorithm. But the core principle of the shortest path with the least amount of bends will stay constant.
+
+<img width="752" height="623" alt="routing grid" src="https://github.com/user-attachments/assets/0ee7529e-8a73-4e64-86d1-11077c424373" />
+
+## DRC Cleaning
+DRC cleaning is done to ensure the design rules were followed and that the routes can be fabricated correctly. Most DRCs are due to the constraints of the photolithography process, where the wavelength of light limits the minimum size of the trace. There are thousands of DRCs. Some examples include:
+- Minimum wire width
+- Minimum wire pitch (center-to-center between wires)
+- Minimum wire spacing (edge-to-edge between wires)
+- Signal short: Where two wires on the same layer cross over each other, disrupting the signals between cells. This can be solved by moving the route to the next layer using vias.
+- Via Width
+- Via Spacing
+
+<img width="376" height="189" alt="wire pitch" src="https://github.com/user-attachments/assets/3eae2516-04ae-41df-b268-9bd9b0709464" />
+
+<img width="788" height="336" alt="chnaged wire" src="https://github.com/user-attachments/assets/9357ba20-d6d3-48fe-87de-d0bbf5b7038e" />
+
+## PDN (Power Distribution Network)
+
+`gen_pdn` generates the PDN. The PDN takes in the design_cts.def as the input def file. This will create the grid for the VDD and GND. VDD and GND are organized in a ring around the core, and the straps connect them to the standard cells. The ring of VDD and GND are powered by the pads surrounding them. 
+
+<img width="760" height="500" alt="PND diagram" src="https://github.com/user-attachments/assets/00ae3bf8-a9c4-48e9-bc73-8e12642e4b9e" />
+
+## Routing with TritonRoute
+
+do `run_routing` to start the routing process.
+
+OpenLane routing is separated into two stages:
+Global Routing: Routing guides (rectangular grids) are created that can route everything. This is done by using FastRoute.
+Detailed Routing: Uses the grid created by global routing to connect the pins using the least amount of bends and in the shortest distance. The tool used is TritonRoute, and it constantly searches for optimisations to find the best possible path to connect the pins.
+
+After my routing process was completed, I had 7 DRC errors that this specific software couldn't automatically fix. If I had chosen a different software, it likely could've found a solution at the expense of a higher runtime and required memory.
+
+![routing working with errors](https://github.com/user-attachments/assets/c0c47260-3f44-443b-bdb6-c182bd53fc11)
 
 

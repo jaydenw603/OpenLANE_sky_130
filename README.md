@@ -1,20 +1,5 @@
 # OpenLANE_sky_130
 This repository contains a comprehensive list of notes from the 5 day OpenLANE sky 130 workshop. 
-# Table of Contents
-- [Day 1 - Intro to open source EDA, SKY130 PDK, and OpenLane](#day-1---intro-to-open-source-eda-sky130-pdk-and-openlane)
-  - i. [Introductory IC vocabulary](#introductory-ic-vocabulary)
-  - ii. [Simplified RTL to GDSII Design Flow](Simplified-RTL-to-GDSII-Design-Flow)
-  - iii. [OpenLANE ASIC Design Flow](OpenLANE-ASIC-Design-Flow)
-  - iv. [OpenLANE Setup](openlane-setup)
- - [Day 2 - Floorplans & Introduction to Library Cells](day-2---floorplans-&-introduction-to-library-cells)
-  - i. [Floorplanning](floorplanning)
-  - ii. [Placement & Routing](Placement-&-Routing)
-  - iii. [Cell Design and Characterization Flows](Cell-Design-and-Characterization-Flows)
-  - iv. [Timing Characterization](Timing-Characterization)
-- [Day 3 - Designing a Library Cell with Magic and Ngspice Characterization](Day-3---Designing-a-Library-Cell-with-Magic-and-Ngspice-Characterization)
-  - i. [Designing a Library Cell](Designing-a-Library-Cell)
-  - ii. [CMOS Fabrication Process (16-mask process)](CMOS-Fabrication-Process-(16-mask-process)-)
-
 
 # Day 1 - Intro to open source EDA, SKY130 PDK, and OpenLane
 ## Introductory IC vocabulary

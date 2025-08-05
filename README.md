@@ -483,4 +483,12 @@ After my routing process was completed, I had 7 DRC errors that this specific so
 
 ![routing working with errors](https://github.com/user-attachments/assets/c0c47260-3f44-443b-bdb6-c182bd53fc11)
 
+Opening the file `120-tritonRoute.drc`, you can see that all 7 DRC errors are shorting errors.
 
+![DRC errors](https://github.com/user-attachments/assets/72c3c2ba-31a5-4b40-a996-a438a84ac876)
+
+After opening up magic, this is the model of the chip:
+
+![Post routing chip](https://github.com/user-attachments/assets/d52decc3-329a-4f74-a5ad-21fabd9f957d)
+
+This marks the end of the RTL2GDSII process. To fix the DRC errors, they would either need to be manually fixed or the design would need to be rerouted. 

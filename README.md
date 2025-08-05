@@ -2,7 +2,19 @@
 This repository contains a comprehensive list of notes from the 5 day OpenLANE sky 130 workshop. 
 # Table of Contents
 - [Day 1 - Intro to open source EDA, SKY130 PDK, and OpenLane](#day-1---intro-to-open-source-eda-sky130-pdk-and-openlane)
-  - i.
+  - i. [Introductory IC vocabulary](#introductory-ic-vocabulary)
+  - ii. [Simplified RTL to GDSII Design Flow](Simplified-RTL-to-GDSII-Design-Flow)
+  - iii. [OpenLANE ASIC Design Flow](OpenLANE-ASIC-Design-Flow)
+  - iv. [OpenLANE Setup](openlane-setup)
+ - [Day 2 - Floorplans & Introduction to Library Cells](day-2---floorplans-&-introduction-to-library-cells)
+  - i. [Floorplanning](floorplanning)
+  - ii. [Placement & Routing](Placement-&-Routing)
+  - iii. [Cell Design and Characterization Flows](Cell-Design-and-Characterization-Flows)
+  - iv. [Timing Characterization](Timing-Characterization)
+- [Day 3 - Designing a Library Cell with Magic and Ngspice Characterization](Day-3---Designing-a-Library-Cell-with-Magic-and-Ngspice-Characterization)
+  - i. [Designing a Library Cell](Designing-a-Library-Cell)
+  - ii. [CMOS Fabrication Process (16-mask process)](CMOS-Fabrication-Process-(16-mask-process)-)
+
 
 # Day 1 - Intro to open source EDA, SKY130 PDK, and OpenLane
 ## Introductory IC vocabulary
@@ -58,14 +70,14 @@ type in `docker` and then follow the commands in the picture.
 <img width="1366" height="775" alt="OpenLANE cell placement done" src="https://github.com/user-attachments/assets/9f669bea-d58d-47f4-ae0f-488ee29673cd" />
 
 
-## Floorplanning with OpenLANE
+### Floorplanning with OpenLANE
 In OpenLANE type in `run_floorplan`. After checking the results you should see this:
 
 ![OPENLANE pico floorplan](https://github.com/user-attachments/assets/315cbc65-548b-480e-865c-5c195980c74e)
 
 This shows the die area of the chip
 
-## Floorplanning with Magic
+### Floorplanning with Magic
 
 <img width="605" height="542" alt="183226953-8bf8b067-5a70-43a3-9b92-f39caaf02a4a" src="https://github.com/user-attachments/assets/ff68cea2-519e-47c0-958a-17cee5781c2f" />
 
@@ -82,10 +94,10 @@ This shows the die area of the chip
 <img width="1407" height="763" alt="OpenLANE Placement Optimization" src="https://github.com/user-attachments/assets/6f0adb44-4626-4b68-bec1-56a04588bbeb" />
 
 
-## Running Placement on OpenLANE
+### Running Placement on OpenLANE
 Type in `run_placement`
 
-## Viewing Placement on Magic
+### Viewing Placement on Magic
 
 ![OPENLANE Placement](https://github.com/user-attachments/assets/62c61942-7e54-44cb-b3ed-0c610f70eef5)
 
@@ -164,7 +176,7 @@ Vin in 0 2.5
 <img width="973" height="687" alt="OpenLANE switching threshhold" src="https://github.com/user-attachments/assets/9962e1b8-b133-4ff3-87a2-f28c2979283d" />
 
 
-## CMOS Fabrication Process (16-mask process):
+## CMOS Fabrication Process (16-mask process)
 1. Selecting a Substrate: The material on which the IC is fabricated. The most commonly used substrate is the P-type substrate. Different types of substrates have different properties, such as resistivity and doping level. 
 2. Creating an Active Region for Transistors: Grow an insulator on the substrate (SiO2) to separate the transistor regions. Then deposit Si3N4 onto the insulator. Finally, deposit photoresist onto the Si3N4.
 
